@@ -1,9 +1,13 @@
 #Multi-configuration and multi-agent job options are not exported to YAML. Configure these options using documentation guidance: https://docs.microsoft.com/vsts/pipelines/process/phases
-
 pool:
+  vmImage: 'ubuntu-16.04'
   name: Azure Pipelines
-variables:
-  python.version: '3.7, 3.8'
+strategy:
+  matrix:
+    Python37:
+      python.version: '3.7'
+    Python38:
+      python.version: '3.8'
 
 steps:
 - task: UsePythonVersion@0
