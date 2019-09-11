@@ -21,7 +21,7 @@ steps:
 
 - script: |
     pip install pytest pytest-cov
-    pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov src/pyskindose --cov-report html
+    pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov src/pyskindose --cov-report html --cov-report xml
     ls -l
   displayName: pytest
 
@@ -34,6 +34,6 @@ steps:
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish code coverage for Python $(python.version)'
   inputs:
-    codeCoverageTool: Cobertura
-    summaryFileLocation: '**/coverage.xml'
-    reportDirectory: 'htmlcov'
+    codeCoverageTool: 'cobertura'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.xml'
+    reportDirectory: $(System.DefaultWorkingDirectory)/**/htmlcov'
