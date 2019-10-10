@@ -6,10 +6,6 @@ verify_ssl = true
 [dev-packages]
 pytest = "*"
 pydocstyle = "*"
-pylint = "*"
-mypy = "*"
-pylama = "*"
-v = {editable = true,version = "*"}
 
 [packages]
 pyskindose = {editable = true,path = "."}
