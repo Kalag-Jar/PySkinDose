@@ -48,7 +48,7 @@ PARAM_DEV = dict(
         # Patient offset from table isocenter (centered at head end side).
         patient_offset={'d_lat': 0,
                         'd_ver': 0,
-                        'd_lon': -15,
+                        'd_lon': -35,
                         'units': 'cm'},
         # Dimensions of matematical phantoms (except model='human')
         dimension={
@@ -111,7 +111,7 @@ def main(file_path: Optional[str] = None, settings: Union[str, dict] = None):
         file_path = os.path.join(
             os.path.dirname(__file__), 'example_data', 'RDSR',
             param.rdsr_filename)
-
+        print((file_path))
     # Read RDSR data with pydicom
     data_raw = pydicom.read_file(file_path)
 
