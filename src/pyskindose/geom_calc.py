@@ -272,6 +272,7 @@ class Triangle:
         stop : np.array
             Carthesian 3D coordinates to the end points of the segment. Note,
             can be several points, e.g, several skin cells.
+
         Returns
         -------
             List[bool]
@@ -279,7 +280,6 @@ class Triangle:
             and each of coordinates in stop are intercepted by the triangle.
 
         """
-
         # Vector from source to central vertex
         # w = vector(start, self.p)
         w = self.p - start
