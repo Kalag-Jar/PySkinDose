@@ -20,11 +20,12 @@ from pyskindose.phantom_class import Phantom
 from pyskindose.plots import plot_geometry
 from pyskindose.settings import PyskindoseSettings
 
-PARSER = argparse.ArgumentParser()
+DESCRIPTION = 'PySkinDose is a Python version 3.7 based program for patient peak skin dose (PSD) estimations from fluoroscopic procedures in interventional radiology.'
+
+PARSER = argparse.ArgumentParser(description=DESCRIPTION)
 
 PARSER.add_argument('--file-path', help='Path to RDSR DICOM file')
 ARGS = PARSER.parse_args()
-
 
 PARAM_DEV = dict(
     # modes: 'calculate_dose', 'plot_setup', 'plot_event', 'plot_procedure'
