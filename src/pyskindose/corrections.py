@@ -1,10 +1,14 @@
+import logging
+from typing import List
+
 import numpy as np
 import pandas as pd
 from scipy.interpolate import CubicSpline
 import scipy.interpolate
-from typing import List
 
 from .db_connect import db_connect
+
+logger = logging.getLogger(__name__)
 
 
 def calculate_k_isq(source: np.array, cells: np.array, dref: float
