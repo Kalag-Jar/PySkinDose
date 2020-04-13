@@ -3,7 +3,7 @@ from typing import List, Dict, Any
 import numpy as np
 import pandas as pd
 from pyskindose import Phantom, constants as const
-from pyskindose.calculate_dose.add_correction_and_ecent_dose_to_output import add_corrections_and_event_dose_to_output
+from pyskindose.calculate_dose.add_correction_and_event_dose_to_output import add_corrections_and_event_dose_to_output
 from pyskindose.calculate_dose.calculate_dose import logger
 from pyskindose.calculate_dose.perform_calculations_for_new_geometries import perform_calculations_for_new_geometries
 from scipy.interpolate import CubicSpline
