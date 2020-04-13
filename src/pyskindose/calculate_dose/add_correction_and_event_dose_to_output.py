@@ -3,7 +3,7 @@ from typing import List, Dict, Any
 import numpy as np
 import pandas as pd
 from pyskindose import Phantom, constants as const
-from pyskindose.calculate_dose.calculate_dose import logger
+# from pyskindose.calculate_dose.calculate_dose import logger
 from pyskindose.corrections import calculate_k_med
 from scipy.interpolate import CubicSpline
 
@@ -18,17 +18,17 @@ def add_corrections_and_event_dose_to_output(normalized_data: pd.DataFrame, even
         output[const.OUTPUT_KEY_DOSE_MAP] += event_dose
         return output
 
-    logger.debug("Calculating back scatter correction factor")
+    # logger.debug("Calculating back scatter correction factor")
     k_bs = back_scatter_interpolation[event](np.sqrt(field_area))
 
-    logger.debug("Calculating reference point medium correction (air -> water)")
+    # logger.debug("Calculating reference point medium correction (air -> water)")
     k_med = calculate_k_med(data_norm=normalized_data, field_area=field_area, event=event)
 
     output[const.OUTPUT_KEY_CORRECTION_BACK_SCATTER][event] = k_bs
     output[const.OUTPUT_KEY_CORRECTION_MEDIUM][event] = k_med
     output[const.OUTPUT_KEY_CORRECTION_TABLE][event] = k_tab[event]
 
-    logger.debug("Calculating event skin dose by applying each correction factor to the reference point air kerma")
+    # logger.debug("Calculating event skin dose by applying each correction factor to the reference point air kerma")
     event_dose[hits] += normalized_data.K_IRP[event]
     event_dose[hits] *= output[const.OUTPUT_KEY_CORRECTION_INVERSE_SQUARE_LAW][event]
     event_dose[hits] *= k_med

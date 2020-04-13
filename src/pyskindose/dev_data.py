@@ -2,7 +2,7 @@ from . import constants as const
 
 DEVELOPMENT_PARAMETERS = dict(
     # modes: 'calculate_dose', 'plot_setup', 'plot_event', 'plot_procedure'
-    mode=const.MODE_PLOT_PROCEDURE,
+    mode=const.MODE_PLOT_SETUP,
     # RDSR filename
     rdsr_filename='S1.dcm',
     # Irrading event index for mode='plot_event'

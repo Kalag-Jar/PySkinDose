@@ -10,7 +10,7 @@ from pyskindose.parse_data import rdsr_parser
 from pyskindose.parse_data import rdsr_normalizer
 from pyskindose.settings import PyskindoseSettings
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 DESCRIPTION = ('PySkinDose is a Python version 3.7 based program for patient peak skin dose (PSD) estimations from '
                'fluoroscopic procedures in interventional radiology.')
@@ -56,7 +56,7 @@ def _parse_settings_to_settings_class(settings: Optional[str] = None):
     settings_path = os.path.join(os.path.dirname(__file__), 'settings.json')
 
     if not os.path.exists(settings_path):
-        logger.warning("The give settings path does not exist. Using example settings.")
+        # logger.warning("The give settings path does not exist. Using example settings.")
         settings_path = os.path.join(os.path.dirname(__file__), 'settings_example.json')
 
     with open(settings_path, "r") as fp:
@@ -70,7 +70,7 @@ def _read_and_normalise_data_from_rdsr_file(rdsr_filepath: str, settings: Pyskin
         rdsr_filepath = os.path.join(
             os.path.dirname(__file__), 'example_data', 'RDSR',
             settings.rdsr_filename)
-        logger.debug(rdsr_filepath)
+        # logger.debug(rdsr_filepath)
     # Read RDSR data with pydicom
     data_raw = pydicom.read_file(rdsr_filepath)
 

@@ -17,16 +17,16 @@ from pyskindose.geom_calc import (
 from pyskindose.phantom_class import Phantom
 from pyskindose.settings import PyskindoseSettings
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 
 def calculate_dose(normalized_data: pd.DataFrame, settings: PyskindoseSettings, table: Phantom,
                    pad: Phantom) -> Tuple[Phantom, Optional[Dict[str, Any]]]:
     if settings.mode != const.MODE_CALCULATE_DOSE:
-        logger.debug("Mode not set to calculate dose. Returning without doing anything")
+        # logger.debug("Mode not set to calculate dose. Returning without doing anything")
         return None
 
-    logger.info("Start performing dose calculations")
+    # logger.info("Start performing dose calculations")
     patient = Phantom(
         phantom_model=settings.phantom.model,
         phantom_dim=settings.phantom.dimension,

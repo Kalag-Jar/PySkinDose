@@ -8,7 +8,7 @@ import scipy.interpolate
 
 from .db_connect import db_connect
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
 
 def calculate_k_isq(source: np.array, cells: np.array, dref: float
