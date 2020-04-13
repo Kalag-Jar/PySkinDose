@@ -10,11 +10,12 @@ from pyskindose.plotting.plot_without_dose_map import plot_without_dose_map
 from pyskindose.settings import PyskindoseSettings
 
 
-def analyze_data(normalized_data: pd.DataFrame, settings: PyskindoseSettings, plot_dose_map: Optional[bool] = True) -> Dict[str, Any]:
+def analyze_data(normalized_data: pd.DataFrame, settings: PyskindoseSettings, plot_dose_map: Optional[bool] = False) -> Dict[str, Any]:
     # create table, pad and patient phantoms.
     table = Phantom(phantom_model=const.PHANTOM_MODEL_TABLE, phantom_dim=settings.phantom.dimension)
     pad = Phantom(phantom_model=const.PHANTOM_MODEL_PAD, phantom_dim=settings.phantom.dimension)
 
+    # TODO rename function
     plot_without_dose_map(normalized_data=normalized_data, table=table, pad=pad, settings=settings)
 
     patient, output = calculate_dose(normalized_data=normalized_data, settings=settings, table=table, pad=pad)

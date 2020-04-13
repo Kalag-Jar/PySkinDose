@@ -19,7 +19,6 @@ from pyskindose.settings import PyskindoseSettings
 
 # logger = logging.getLogger(__name__)
 
-
 def calculate_dose(normalized_data: pd.DataFrame, settings: PyskindoseSettings, table: Phantom,
                    pad: Phantom) -> Tuple[Phantom, Optional[Dict[str, Any]]]:
     if settings.mode != const.MODE_CALCULATE_DOSE:

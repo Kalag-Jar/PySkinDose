@@ -35,10 +35,21 @@ def calculate_irradiation_event_result(normalized_data: pd.DataFrame, event: int
 
     event += 1
     if event < total_events:
+
         output = calculate_irradiation_event_result(
-            normalized_data=normalized_data, event=event, total_events=total_events,
-            new_geometry=new_geometry, k_tab=k_tab, hits=hits, patient=patient, table=table, pad=pad,
-            back_scatter_interpolation=back_scatter_interpolation, output=output
-        )
+            normalized_data=normalized_data,
+            event=event,
+            total_events=total_events,
+            new_geometry=new_geometry,
+            k_tab=k_tab,
+            hits=hits,
+            patient=patient, 
+            table=table,
+            pad=pad,
+            back_scatter_interpolation=back_scatter_interpolation,
+            output=output, 
+            table_hits=table_hits,
+            field_area=field_area,
+            k_isq=k_isq)
 
     return output
