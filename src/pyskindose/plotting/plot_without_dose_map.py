@@ -35,4 +35,5 @@ def plot_without_dose_map(normalized_data: pd.DataFrame, table: Phantom, pad: Ph
             settings.phantom.patient_offset.d_lon])
 
     plot_geometry(patient=patient, table=table, pad=pad, data_norm=normalized_data,
+                  mode=settings.mode, event=settings.plot_event_index, 
                   include_patient=len(normalized_data) <= const.MAXIMUM_NUMBER_OF_EVENTS_FOR_INCLUDING_PHANTOM_IN_EVENT_PLOT)

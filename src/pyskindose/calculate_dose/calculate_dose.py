@@ -24,7 +24,7 @@ def calculate_dose(normalized_data: pd.DataFrame, settings: PyskindoseSettings, 
                    pad: Phantom) -> Tuple[Phantom, Optional[Dict[str, Any]]]:
     if settings.mode != const.MODE_CALCULATE_DOSE:
         # logger.debug("Mode not set to calculate dose. Returning without doing anything")
-        return None
+        return None, None
 
     # logger.info("Start performing dose calculations")
     patient = Phantom(
@@ -72,6 +72,6 @@ def calculate_dose(normalized_data: pd.DataFrame, settings: PyskindoseSettings, 
         back_scatter_interpolation=back_scatter_interpolation, output=output_template
     )
 
-    return output
+    return patient, output
 
 
