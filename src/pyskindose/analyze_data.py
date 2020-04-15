@@ -5,7 +5,7 @@ from pyskindose import constants as const
 from pyskindose.calculate_dose.calculate_dose import calculate_dose
 from pyskindose.phantom_class import Phantom
 from pyskindose.plotting.create_dose_map_plot import create_dose_map_plot
-from pyskindose.plotting.plot_without_dose_map import plot_without_dose_map
+from pyskindose.plotting.create_geometry_plot import create_geometry_plot
 from pyskindose.settings import PyskindoseSettings
 
 
@@ -24,8 +24,7 @@ def analyze_data(
         phantom_model=const.PHANTOM_MODEL_PAD, phantom_dim=settings.phantom.dimension
     )
 
-    # TODO rename function
-    plot_without_dose_map(
+    create_geometry_plot(
         normalized_data=normalized_data, table=table, pad=pad, settings=settings
     )
 

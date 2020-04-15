@@ -5,7 +5,7 @@ from pyskindose.phantom_class import Phantom
 from pyskindose.settings import PyskindoseSettings
 
 
-def plot_without_dose_map(normalized_data: pd.DataFrame, table: Phantom, pad: Phantom,
+def create_geometry_plot(normalized_data: pd.DataFrame, table: Phantom, pad: Phantom,
                           settings: PyskindoseSettings) -> None:
     if settings.mode not in [const.MODE_PLOT_SETUP, const.MODE_PLOT_EVENT, const.MODE_PLOT_PROCEDURE]:
         return
