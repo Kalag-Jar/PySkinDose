@@ -12,12 +12,14 @@ from pyskindose.settings import PyskindoseSettings
 
 # logger = logging.getLogger(__name__)
 
-DESCRIPTION = ('PySkinDose is a Python version 3.7 based program for patient peak skin dose (PSD) estimations from '
-               'fluoroscopic procedures in interventional radiology.')
+DESCRIPTION = (
+    "PySkinDose is a Python version 3.7 based program for patient peak skin dose (PSD)"
+    "estimations from fluoroscopic procedures in interventional radiology."
+)
 
 PARSER = argparse.ArgumentParser(description=DESCRIPTION)
 
-PARSER.add_argument('--file-path', help='Path to RDSR DICOM file')
+PARSER.add_argument("--file-path", help="Path to RDSR DICOM file")
 ARGS = PARSER.parse_args()
 
 
@@ -44,8 +46,10 @@ def main(file_path: Optional[str] = None, settings: Union[str, dict] = None):
     """
     settings = _parse_settings_to_settings_class(settings=settings)
 
-    data_norm = _read_and_normalise_data_from_rdsr_file(rdsr_filepath=file_path, settings=settings)
-    
+    data_norm = _read_and_normalise_data_from_rdsr_file(
+        rdsr_filepath=file_path, settings=settings
+    )
+
     _ = analyze_data(normalized_data=data_norm, settings=settings, plot_dose_map=True)
 
 
@@ -53,11 +57,11 @@ def _parse_settings_to_settings_class(settings: Optional[str] = None):
     if settings is not None:
         return PyskindoseSettings(settings)
 
-    settings_path = os.path.join(os.path.dirname(__file__), 'settings.json')
+    settings_path = os.path.join(os.path.dirname(__file__), "settings.json")
 
     if not os.path.exists(settings_path):
         # logger.warning("The give settings path does not exist. Using example settings.")
-        settings_path = os.path.join(os.path.dirname(__file__), 'settings_example.json')
+        settings_path = os.path.join(os.path.dirname(__file__), "settings_example.json")
 
     with open(settings_path, "r") as fp:
         output = fp.read()
@@ -65,11 +69,13 @@ def _parse_settings_to_settings_class(settings: Optional[str] = None):
     return PyskindoseSettings(output)
 
 
-def _read_and_normalise_data_from_rdsr_file(rdsr_filepath: str, settings: PyskindoseSettings):
+def _read_and_normalise_data_from_rdsr_file(
+    rdsr_filepath: str, settings: PyskindoseSettings
+):
     if not rdsr_filepath:
         rdsr_filepath = os.path.join(
-            os.path.dirname(__file__), 'example_data', 'RDSR',
-            settings.rdsr_filename)
+            os.path.dirname(__file__), "example_data", "RDSR", settings.rdsr_filename
+        )
         # logger.debug(rdsr_filepath)
     # Read RDSR data with pydicom
     data_raw = pydicom.read_file(rdsr_filepath)
