@@ -4,9 +4,8 @@ import plotly.graph_objs as go
 import plotly.offline as ply
 from typing import Dict
 
-from .phantom_class import Phantom
-from .beam_class import Beam
-
+from pyskindose.phantom_class import Phantom
+from pyskindose.beam_class import Beam
 
 def plot_geometry(patient: Phantom, table: Phantom, pad: Phantom,
                   data_norm: pd.DataFrame, mode: str, event: int = 0,

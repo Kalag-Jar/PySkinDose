@@ -1,9 +1,9 @@
 import pandas as pd
 
-from pyskindose import constants as const, plot_geometry, position_geometry
+from pyskindose import constants as const, position_geometry
 from pyskindose.phantom_class import Phantom
 from pyskindose.settings import PyskindoseSettings
-
+from pyskindose.plotting.plot_geometry import plot_geometry
 
 def create_geometry_plot(normalized_data: pd.DataFrame, table: Phantom, pad: Phantom,
                           settings: PyskindoseSettings) -> None:
