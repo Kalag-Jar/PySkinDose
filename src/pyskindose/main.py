@@ -50,7 +50,7 @@ def main(file_path: Optional[str] = None, settings: Union[str, dict] = None):
         rdsr_filepath=file_path, settings=settings
     )
 
-    _ = analyze_data(normalized_data=data_norm, settings=settings, plot_dose_map=True)
+    _ = analyze_data(normalized_data=data_norm, settings=settings, plot_dose_map=False)
 
 
 def _parse_settings_to_settings_class(settings: Optional[str] = None):
