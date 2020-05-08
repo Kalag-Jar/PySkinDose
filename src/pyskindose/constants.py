@@ -4,7 +4,7 @@ DIMENSION_PLANE_LENGTH = "plane_length"
 DIMENSION_PLANE_RESOLUTION = "plane_resolution"
 DIMENSION_PLANE_WIDTH = "plane_width"
 
-MAXIMUM_NUMBER_OF_EVENTS_FOR_INCLUDING_PHANTOM_IN_EVENT_PLOT = 99  # Set to avoid memory errors
+MAXIMUM_NUMBER_OF_EVENTS_FOR_INCLUDING_PHANTOM_IN_EVENT_PLOT = 200  # Set to avoid memory errors
 
 MODE_CALCULATE_DOSE = "calculate_dose"
 MODE_PLOT_EVENT = "plot_event"
@@ -19,7 +19,7 @@ OUTPUT_KEY_DOSE_MAP = "dose_map"
 OUTPUT_KEY_HITS = "hits"
 OUTPUT_KEY_KERMA = "kerma"
 
-PHANTOM_MESH_ADULT_MALE = "adult_male"
+PHANTOM_MESH_ADULT_MALE = "hudfrid"
 
 PHANTOM_MODEL_CYLINDER = "cylinder"
 PHANTOM_MODEL_HUMAN = "human"
