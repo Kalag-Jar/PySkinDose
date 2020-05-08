@@ -26,7 +26,27 @@ def calculate_dose(
     table: Phantom,
     pad: Phantom,
 ) -> Tuple[Phantom, Optional[Dict[str, Any]]]:
+    """Calculate skin dose.
 
+    This function initializes the skin dose calculations.
+
+    Parameters
+    ----------
+    normalized_data : pd.DataFrame
+        RDSR data, normalized for compliance with PySkinDose.
+    settings : PyskindoseSettings
+        Settings class for PySkinDose
+    table : Phantom
+        Patient support table phantom
+    pad : Phantom
+        Patient support pad phantom
+
+    Returns
+    -------
+    Tuple[Phantom, Optional[Dict[str, Any]]]
+        [description]
+
+    """
     if settings.mode != const.MODE_CALCULATE_DOSE:
         # logger.debug("Mode not set to calculate dose. Returning without doing anything")
         return None, None

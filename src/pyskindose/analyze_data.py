@@ -14,7 +14,24 @@ def analyze_data(
     settings: PyskindoseSettings,
     plot_dose_map: Optional[bool] = False,
 ) -> Dict[str, Any]:
+    """Analyze data och settings, and runs PySkinDose in desired mode.
 
+    Parameters
+    ----------
+    normalized_data : pd.DataFrame
+        RDSR data, normalized for compliance with PySkinDose.
+    settings : PyskindoseSettings
+        Settings class for PySkinDose
+    plot_dose_map : Optional[bool], optional
+        Wheter or not to plot dose map, by default False
+
+    Returns
+    -------
+    Dict[str, Any]
+        output dictionary containing calculation specifics such as dose map, correction
+        factors, etc..
+
+    """
     # create table, pad and patient phantoms.
     table = Phantom(
         phantom_model=const.PHANTOM_MODEL_TABLE, phantom_dim=settings.phantom.dimension
@@ -24,7 +41,6 @@ def analyze_data(
         phantom_model=const.PHANTOM_MODEL_PAD, phantom_dim=settings.phantom.dimension
     )
 
-    # TODO rename function
     create_geometry_plot(
         normalized_data=normalized_data, table=table, pad=pad, settings=settings
     )

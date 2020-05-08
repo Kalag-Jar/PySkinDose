@@ -52,7 +52,6 @@ def main(file_path: Optional[str] = None, settings: Union[str, dict] = None):
 
     _ = analyze_data(normalized_data=data_norm, settings=settings, plot_dose_map=False)
 
-
 def _parse_settings_to_settings_class(settings: Optional[str] = None):
     if settings is not None:
         return PyskindoseSettings(settings)

@@ -7,6 +7,20 @@ from pyskindose.plotting.plot_geometry import plot_geometry
 
 def create_geometry_plot(normalized_data: pd.DataFrame, table: Phantom, pad: Phantom,
                           settings: PyskindoseSettings) -> None:
+    """Create any of the geometry plots available in PySkinDose.
+
+    Parameters
+    ----------
+    normalized_data : pd.DataFrame
+        RDSR data, normalized for compliance with PySkinDose
+    table : Phantom
+        Patient support table phantom
+    pad : Phantom
+        Patient support pad phantom
+    settings : PyskindoseSettings
+        Settings class for PySkinDose
+
+    """
     if settings.mode not in [const.MODE_PLOT_SETUP, const.MODE_PLOT_EVENT, const.MODE_PLOT_PROCEDURE]:
         return
 

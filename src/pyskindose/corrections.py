@@ -188,7 +188,7 @@ def calculate_k_med(
 def calculate_k_tab(
     data_norm: pd.DataFrame, estimate_k_tab: bool = False, k_tab_val: float = 0.8
 ) -> List[float]:
-    """Fetches table correction factor from database.
+    """Fetch table correction factor from database.
 
     This function fetches measured table correction factor as a function of
     HVL and kVp. Further, if no measurement are conducted on a specific unit,
@@ -207,8 +207,8 @@ def calculate_k_tab(
     -------
     List[float]
         List of table correction factor for all events in procedure.
-    """
 
+    """
     if estimate_k_tab:
         return [k_tab_val] * len(data_norm)
 
