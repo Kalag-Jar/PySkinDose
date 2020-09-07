@@ -24,6 +24,7 @@ from ..constants import (
     PLOT_HOVER_LABEL_FONT_FAMILY
 )
 from .create_mesh3d import create_mesh_3d_general
+from .create_plot_and_save_to_file import create_plot_and_save_to_file
 from .create_wireframes import create_wireframes
 from .get_camera_view import get_camera_view
 from ..phantom_class import Phantom
@@ -93,9 +94,4 @@ def create_setup_and_event_plot(patient: Phantom, table: Phantom, pad: Phantom, 
     data = [patient_mesh, source_mesh, table_mesh, detector_mesh, pad_mesh,
             beam_mesh, wf_beam, wf_table, wf_pad, wf_detector]
 
-    fig = go.Figure(data=data, layout=layout)
-
-    plot_filename = f"{mode}.html"
-
-    logger.debug(f"Create plot and save to file {plot_filename}")
-    ply.plot(fig, filename=plot_filename)
+    create_plot_and_save_to_file(mode=mode, data=data, layout=layout)

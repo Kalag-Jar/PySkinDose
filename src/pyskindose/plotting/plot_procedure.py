@@ -1,20 +1,35 @@
 import logging
 from typing import Any, Dict, List, Optional
 
-import numpy as np
 import pandas as pd
 import plotly.graph_objs as go
 
 from ..constants import (
+    COLOR_AZURE_DARK,
+    COLOR_PLOT_TEXT,
+    COLOR_ZERO_LINE,
     IRRADIATION_EVENT_STEP_KEY_ARGUMENTS,
     IRRADIATION_EVENT_STEP_KEY_LABEL,
     IRRADIATION_EVENT_STEP_KEY_METHOD,
     MODE_PLOT_PROCEDURE,
-    PLOT_SLIDER_BORDER_COLOR, PLOT_SLIDER_TICK_COLOR, PLOT_SLIDER_BACKGROUND_COLOR, PLOT_FONT_FAMILY, COLOR_PLOT_TEXT,
-    PLOT_SLIDER_PADDING, PLOT_SLIDER_TRANSITION, PLOT_SLIDER_BORDER_WIDTH, PLOT_SLIDER_FONT_SIZE_CURRENT,
-    PLOT_SLIDER_FONT_SIZE_GENERAL, COLOR_AZURE_DARK, PLOT_TITLE_FONT_FAMILY, PLOT_TITLE_FONT_SIZE
+    PLOT_AXIS_TITLE_X,
+    PLOT_AXIS_TITLE_Y,
+    PLOT_AXIS_TITLE_Z,
+    PLOT_FONT_FAMILY,
+    PLOT_HOVER_LABEL_FONT_FAMILY,
+    PLOT_SLIDER_BACKGROUND_COLOR,
+    PLOT_SLIDER_BORDER_COLOR,
+    PLOT_SLIDER_BORDER_WIDTH,
+    PLOT_SLIDER_FONT_SIZE_CURRENT,
+    PLOT_SLIDER_FONT_SIZE_GENERAL,
+    PLOT_SLIDER_PADDING,
+    PLOT_SLIDER_TICK_COLOR,
+    PLOT_SLIDER_TRANSITION,
+    PLOT_TITLE_FONT_FAMILY,
+    PLOT_TITLE_FONT_SIZE
 )
 from .create_irradiation_event_procedure_plot_data import create_irradiation_event_procedure_plot_data
+from .create_plot_and_save_to_file import create_plot_and_save_to_file
 from .get_camera_view import get_camera_view
 from ..phantom_class import Phantom
 
@@ -43,7 +58,11 @@ def plot_procedure(mode: str, data_norm: pd.DataFrame, include_patient: bool, pa
         for ind in range(len(data_norm))
     ]
 
+    data = [val for el in meshes for _, val in el.items()]
+
     layout = _create_procedure_layout(title=title, total_events=len(data_norm))
+
+    create_plot_and_save_to_file(mode=mode, data=data, layout=layout)
 
 
 def _create_event_slider_step(total_events: int, event: int) -> Dict[str, Any]:
@@ -81,8 +100,8 @@ def _create_procedure_layout(title: str, total_events: int) -> go.Layout:
 
     return go.Layout(
         sliders=_create_sliders(steps=steps, total_events=total_events),
-        font=dict(family='Franklin Gothic', size=14),
-        hoverlabel=dict(font=dict(family="Consolas, monospace", size=16)),
+        font=dict(family=PLOT_FONT_FAMILY, size=14),
+        hoverlabel=dict(font=dict(family=PLOT_HOVER_LABEL_FONT_FAMILY, size=PLOT_SLIDER_FONT_SIZE_GENERAL)),
         showlegend=False,
         dragmode="orbit",
         title=title,
@@ -92,20 +111,20 @@ def _create_procedure_layout(title: str, total_events: int) -> go.Layout:
         paper_bgcolor=COLOR_AZURE_DARK,
         scene=dict(aspectmode="cube",
                    camera=get_camera_view(),
-                   xaxis=dict(title='X - LON [cm]',
+                   xaxis=dict(title=PLOT_AXIS_TITLE_X,
                               range=[-150, 150],
-                              color="white",
-                              zerolinecolor="limegreen", zerolinewidth=3),
+                              color=COLOR_PLOT_TEXT,
+                              zerolinecolor=COLOR_ZERO_LINE, zerolinewidth=3),
 
-                   yaxis=dict(title="Y - VER [cm]",
+                   yaxis=dict(title=PLOT_AXIS_TITLE_Y,
                               range=[-150, 150],
-                              color="white",
-                              zerolinecolor="limegreen", zerolinewidth=3),
+                              color=COLOR_PLOT_TEXT,
+                              zerolinecolor=COLOR_ZERO_LINE, zerolinewidth=3),
 
-                   zaxis=dict(title='Z - LAT [cm]',
+                   zaxis=dict(title=PLOT_AXIS_TITLE_Z,
                               range=[-150, 150],
-                              color="white",
-                              zerolinecolor="limegreen", zerolinewidth=3)
+                              color=COLOR_PLOT_TEXT,
+                              zerolinecolor=COLOR_ZERO_LINE, zerolinewidth=3)
                    )
     )
 
