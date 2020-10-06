@@ -54,7 +54,7 @@ def create_irradiation_event_procedure_plot_data(data_norm: pd.DataFrame, includ
         # Create patient mesh
         output[IRRADIATION_EVENT_PROCEDURE_KEY_PATIENT] = create_mesh_3d_general(
             obj=patient, color=COLOR_PATIENT, mesh_text=patient_text,
-            lighting=dict(diffuse=0.5, ambient=0.5))
+            lighting=dict(diffuse=0.5, ambient=0.5), visible_status=visible_status)
 
     # Create X-ray source mesh
     output[IRRADIATION_EVENT_PROCEDURE_KEY_SOURCE] = go.Scatter3d(

@@ -36,7 +36,7 @@ IRRADIATION_EVENT_STEP_KEY_METHOD = "method"
 MAXIMUM_NUMBER_OF_EVENTS_FOR_INCLUDING_PHANTOM_IN_EVENT_PLOT = 200  # Set to avoid memory errors
 
 MESH_NAME_PAD = "Support pad"
-MESH_OPACITY_BEAM = 0.3
+MESH_OPACITY_BEAM = 1.0  # Plotly cannot handle opacity less than 1 at the moment
 
 MODE_CALCULATE_DOSE = "calculate_dose"
 MODE_PLOT_EVENT = "plot_event"

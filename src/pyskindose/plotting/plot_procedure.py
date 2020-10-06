@@ -36,7 +36,7 @@ from ..phantom_class import Phantom
 logger = logging.getLogger(__name__)
 
 
-def plot_procedure(mode: str, data_norm: pd.DataFrame, include_patient: bool, patient: Optional[Phantom] = None):
+def plot_procedure(mode: str, data_norm: pd.DataFrame, table: Phantom, pad: Phantom, include_patient: bool, patient: Optional[Phantom] = None):
     if mode != MODE_PLOT_PROCEDURE:
         return
 
@@ -53,12 +53,17 @@ def plot_procedure(mode: str, data_norm: pd.DataFrame, include_patient: bool, pa
             include_patient=include_patient,
             visible_status=(ind == 0),
             event=ind,
-            patient=(patient if include_patient else None)
+            patient=(patient if include_patient else None),
+            table=table,
+            pad=pad
         )
         for ind in range(len(data_norm))
     ]
 
-    data = [val for el in meshes for _, val in el.items()]
+    # data = [val for el in meshes for _, val in el.items()]
+    data = [event.get(plot_object) 
+            for plot_object in meshes[0].keys()
+            for event in meshes]
 
     layout = _create_procedure_layout(title=title, total_events=len(data_norm))
 

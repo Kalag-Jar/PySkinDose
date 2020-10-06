@@ -55,7 +55,7 @@ def create_setup_and_event_plot(patient: Phantom, table: Phantom, pad: Phantom, 
     detector_mesh = create_mesh_3d_general(obj=beam, color=COLOR_DETECTOR,
                                            mesh_text=detectors_text, detector_mesh=True)
 
-    pad_mesh = create_mesh_3d_general(obj=table, color=COLOR_PAD,
+    pad_mesh = create_mesh_3d_general(obj=pad, color=COLOR_PAD,
                                       mesh_text=pad_text, mesh_name=MESH_NAME_PAD)
 
     beam_mesh = create_mesh_3d_general(obj=beam, color=COLOR_BEAM, opacity=MESH_OPACITY_BEAM,

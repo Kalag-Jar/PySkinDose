@@ -54,6 +54,6 @@ def plot_geometry(patient: Phantom, table: Phantom, pad: Phantom,
     """
     plot_setup(mode=mode, data_norm=data_norm, patient=patient, table=table, pad=pad)
     plot_event(mode=mode, data_norm=data_norm, event=event, patient=patient, table=table, pad=pad)
-    plot_procedure(mode=mode, data_norm=data_norm, include_patient=include_patient)
+    plot_procedure(mode=mode, data_norm=data_norm, include_patient=include_patient, patient=patient, table=table, pad=pad)
 
 
